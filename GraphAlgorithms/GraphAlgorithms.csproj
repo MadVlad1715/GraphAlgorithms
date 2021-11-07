@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DataGrid2DLibrary.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DataGrid2DLibrary">
+      <HintPath>DataGrid2DLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

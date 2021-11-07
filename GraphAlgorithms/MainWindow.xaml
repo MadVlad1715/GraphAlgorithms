@@ -1,0 +1,84 @@
+﻿<Window x:Class="GraphAlgorithms.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dg2d="clr-namespace:DataGrid2DLibrary;assembly=DataGrid2DLibrary"
+        xmlns:local="clr-namespace:GraphAlgorithms"
+        mc:Ignorable="d"
+        Title="Graph algorithms" Height="400" Width="500" FontSize="13">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="5">
+            <TextBlock Text="Number of vertices" Margin="0,0,0,2"/>
+            <TextBox Name="vertexNumberInput"
+                     Text="5"
+                     Margin="0,5,0,2"
+                     PreviewTextInput="TextBox_PreviewTextInput"
+                     TextChanged="vertexNumberInput_TextChanged"
+                     DataObject.Pasting="cancelPasting"/>
+
+            <Separator Margin="0,5,0,5"/>
+
+            <TextBlock Text="Algorithm" Margin="0,5,0,2"/>
+            <ComboBox Name="algList"
+                      Margin="0,5,0,2"
+                      SelectionChanged="algList_SelectionChanged">
+                <ComboBoxItem IsSelected="True">Bellman-Ford</ComboBoxItem>
+                <ComboBoxItem>Dijkstra's</ComboBoxItem>
+                <ComboBoxItem>Jonson's</ComboBoxItem>
+            </ComboBox>
+            <StackPanel Visibility="Visible" Name="srcVertexPanel">
+                <TextBlock Text="Source vertex" Margin="0,5,0,2"/>
+                <TextBox Name="sourceVertex"
+                         Text="0"
+                         Margin="0,5,0,2"
+                         PreviewTextInput="TextBox_PreviewTextInput"
+                         TextChanged="sourceVertex_TextChanged"
+                         DataObject.Pasting="cancelPasting"/>
+            </StackPanel>
+
+            <Separator Margin="0,5,0,5"/>
+
+            <Button Name="executeButton" Margin="0,10,0,2" Click="executeButton_Click">Execute</Button>
+        </StackPanel>
+        <Grid Name="grid" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Input graph (adjacency matrix)" Grid.Row="0" Margin="5,5,5,2"/>
+            <dg2d:DataGrid2D Name="graphDataGrid"
+                             Grid.Row="1"
+                             Margin="5,5,5,2"
+                             AlternationCount="2"
+                             UseModifiedDataGridStyle="True"
+                             RowBackground="White"
+                             AlternatingRowBackground="#ebebeb"                       
+                             Background="Transparent"
+                             AutoGeneratingColumn="graphAdjMatrix_AutoGeneratingColumn">
+            </dg2d:DataGrid2D>
+
+            <Separator Margin="5" Grid.Row="2"/>
+
+            <TextBlock Text="Output distances" Grid.Row="3" Margin="5,0,5,2"/>
+            <dg2d:DataGrid2D Name="outputDistances"
+                             Grid.Row="4"
+                             Margin="5"
+                             AlternationCount="2"
+                             UseModifiedDataGridStyle="True"
+                             RowBackground="White"
+                             AlternatingRowBackground="#ebebeb"                       
+                             Background="Transparent"
+                             IsReadOnly="True">
+            </dg2d:DataGrid2D>
+        </Grid>
+    </Grid>
+</Window>
