@@ -22,7 +22,7 @@ namespace GraphAlgorithms
             var alg = (e.AddedItems[0] as ComboBoxItem).Content as string;
             if (alg == null) return;
 
-            srcVertexPanel.Visibility = alg == "Bellman–Ford" || alg == "Dijkstra's" ? Visibility.Visible : Visibility.Collapsed;
+            srcVertexPanel.Visibility = alg == "Bellman-Ford" || alg == "Dijkstra's" ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void graphAdjMatrix_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
